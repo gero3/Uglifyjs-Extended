@@ -1,0 +1,1 @@
+var a="var a = 1;\nvar b = 0;\nvar b = 0;",b=["var a = 1;",a,"var b = 0;"].join("\n")

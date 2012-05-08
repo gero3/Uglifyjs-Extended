@@ -1,0 +1,1 @@
+["toplevel",[["var",[["z",["function",null,["a","b"],[["var",[["c",["num",3]],["d"],["e"],["f"]]],["defun","g",[],[["stat",["assign",true,["name","f"],["num",5]]],["return",["name","f"]]]],["stat",["assign",true,["name","e"],["binary","+",["binary","+",["name","a"],["name","c"]],["call",["name","g"],[]]]]],["return",["name","e"]]]]]]]]]

@@ -1,0 +1,1 @@
+["toplevel",[["var",[["a",["string","var a = 1;\nvar b = 0;\nvar b = 0;"]],["b",["call",["dot",["array",[["string","var a = 1;"],["name","a"],["string","var b = 0;"]]],"join"],[["string","\n"]]]]]]]]
