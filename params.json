@@ -1,0 +1,1 @@
+{"name":"Uglifyjs-extended","body":"# Uglifyjs Extended\r\n\r\nImprove on uglifyjs to get better compression \r\n\r\n## tests \r\n\r\n    * node tests/test.js\r\n    \r\n## Examples\r\n\r\n    * node Examples/run.js","tagline":"extend uglifyjs to allow better compression","google":"","note":"Don't delete this file! It's used internally to help with page regeneration."}
