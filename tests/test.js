@@ -30,7 +30,7 @@ function test(name){
     var compressedAst = compressAst(ast);
     fs.writeFileSync("tests/" + name + "/" + name + "_compress.json",JSON.stringify(compressedAst),"utf8");
     
-    var compressedExtAst = compressedAst;
+    var compressedExtAst = ast; // use starting ast to better see the difference
     compressedExtAst = uglifyExt.runAll(compressedExtAst);
     fs.writeFileSync("tests/" + name + "/" + name + "_compressExt.json",JSON.stringify(compressedExtAst),"utf8");
     
@@ -44,6 +44,7 @@ function main(){
 
     test("ArrayJoin");
     test("UnusedVariables");
+    test("objectReuse");
 }
 
 main();

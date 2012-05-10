@@ -10,6 +10,7 @@ function getAst(text){
 function compressAst(ast){
     ast = pro.ast_mangle(ast); // get a new AST with mangled names
     ast = pro.ast_squeeze(ast); // get an AST with compression optimizations
+//    ast = pro.ast_lift_variables(ast)
     return ast;
 }
 
@@ -23,21 +24,18 @@ function generateCode(ast){
 function test(name){
     var start = new Date();
     var text = fs.readFileSync("Examples/" + name + "/" + name + ".js","utf8");
-    
     var ast = getAst(text);
-    fs.writeFileSync("Examples/" + name + "/" + name + "_ast.json",JSON.stringify(ast),"utf8");
     
     var compressedAst = compressAst(ast);
-    fs.writeFileSync("Examples/" + name + "/" + name + "_compress.json",JSON.stringify(compressedAst),"utf8");
+    var normalcode = generateCode(compressedAst);
+    fs.writeFileSync("Examples/" + name + "/" + name + "_normal.js",normalcode,"utf8");
     
-    var compressedExtAst = compressedAst;
-    compressedExtAst = uglifyExt.runAll(compressedExtAst);
-    fs.writeFileSync("Examples/" + name + "/" + name + "_compressExt.json",JSON.stringify(compressedExtAst),"utf8");
-    
-    var code = generateCode(compressedExtAst);
-    fs.writeFileSync("Examples/" + name + "/" + name + "_result.js",code,"utf8");
+    var compressedExtAst = uglifyExt.runAll(ast);
+    var extendedcode = generateCode(compressedExtAst);
+    fs.writeFileSync("Examples/" + name + "/" + name + "_extended.js",extendedcode,"utf8");
     
     console.log(name + " ended in " + ((+new Date()) - start) + "ms.");
+    console.log(name + " was " + text.length/1000 + "kB.\n It is compressed to " + normalcode.length/1000 + "kB in normal and to " + extendedcode.length/1000 + "kB in extended.");
 }
 
 function main(){
